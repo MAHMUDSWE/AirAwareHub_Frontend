@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
 import CityComparison from "../pages/CityComparison";
+import SearchPage from "../pages/SearchPage";
 
 function PageRoutes() {
 
@@ -16,6 +17,7 @@ function PageRoutes() {
                     <Route path="/air-quality-comparison" element={
                         <CityComparison />
                     } />
+                    <Route path="/search" element={<SearchPage />} />
 
                     <Route path="/*" element={<ErrorPage />} />
 

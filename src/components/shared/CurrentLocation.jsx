@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AQICircularProgress from '../aqi/AqiCircularProgress'
+import axios from 'axios';
 
 export default function CurrentLocation() {
     const [location, setLocation] = useState('Dhaka');

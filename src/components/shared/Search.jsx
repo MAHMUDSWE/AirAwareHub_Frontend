@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBlog, faTimes, faLocation } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
@@ -75,12 +75,12 @@ export default function SearchBar() {
                 <div className="absolute mx-auto mt-1 inset-x-0 w-[92%] sm:w-[95%] max-h-40 lg:max-h-96 overflow-y-auto z-20 drop-shadow-sm shadow-[0px_3px_0px_0px] shadow-blue-500 rounded-md bg-white">
                     <ul>
                         {searchResults.map((city) => (
-                            <li key={city.cityid} className="gap-1 border-b-2 border-blue-200">
-                                <Link to={`/search/${city.cityid}}`} className="text-blue-500">
+                            <li key={city.id} className="gap-1 border-b-2 border-blue-200">
+                                <Link to={`/search?city=${city.name}&state=${city.state}&country=${city.country}`} className="text-blue-500">
                                     <div className="flex py-2 pl-6 pr-8 hover:bg-indigo-50 justify-between items-center gap-2">
-                                        {/* <span className="line-clamp-2"><FontAwesomeIcon icon={faBlog} /> {city.speciality}</span> */}
-                                        <span >{city.name}</span>
+                                        <span className="line-clamp-2"><FontAwesomeIcon icon={faLocation} /> {city.name},  {city.country}</span>
                                     </div>
+
                                 </Link>
                             </li>
                         ))}
