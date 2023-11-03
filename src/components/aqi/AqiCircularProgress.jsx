@@ -35,7 +35,7 @@ const AQICircularProgress = ({ aqi, maxValue }) => {
             <text x={radius + 16} y={radius + 16} textAnchor="middle" fontSize="16">
                 {aqi}
             </text>
-            <text x={radius + 16} y={radius + 16 + radius + 14} textAnchor="middle" fontSize="14">
+            <text x={radius + 16} y={radius + 16 + radius + 14} textAnchor="middle" fontSize="14" fill={`${getAQIColor(aqi)}`}>
                 {getAQILabel(aqi)}
             </text>
 

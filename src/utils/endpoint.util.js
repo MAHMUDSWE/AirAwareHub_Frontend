@@ -3,7 +3,8 @@ const apiEndpoint = {
 
     city: {
         topTenPollutedCity: "/top-10-polluted-city",
-        topTenCleanCity: "/top-10-clean-city"
+        topTenCleanCity: "/top-10-clean-city",
+        listOfCities: "/list-of-cities"
     }
 };
 

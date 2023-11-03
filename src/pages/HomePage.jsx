@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../components/nav/navbar';
-import { getAQIColor, getAQILabel } from '../utils/aqiColors.util';
+import { getAQIColor } from '../utils/aqiColors.util';
 import { AQIHorizontalBar } from '../components/aqi/AqiHorizontalBar';
-import AQICircularProgress from '../components/aqi/AqiCircularProgress';
+import SearchBar from '../components/shared/Search';
+import { Link } from 'react-router-dom';
+import CurrentLocation from '../components/shared/CurrentLocation';
 
 export default function HomePage() {
     const [rankingType, setRankingType] = useState('mostPolluted');
@@ -26,7 +28,6 @@ export default function HomePage() {
             <div className='mt-6 mx-auto justify-center flex flex-col-reverse sm:flex-row bg-gray-100'>
                 <div className='max-w-[550px]'>
                     <div className='bg-white px-6 py-4'>
-                        {/* <span className='text-lg font-semibold'>World Most Polluted Cities</span> <br /> */}
                         <span className='text-lg font-bold'>Live Air Quality Ranking</span> <br />
                         <span className='text-sm text-gray-800'>
                             Air Quality Index depicts the extent of air pollution at a particular location. These are world rankings of cities with the best or worst air quality in real-time. Find out whether your location is among the most polluted or cleanest.
@@ -92,29 +93,31 @@ export default function HomePage() {
                         </div>
 
                     </div>
-                    <div className='text-center border border-b rounded-b-md py-2 text-white bg-primary mb-4'>
-                        View Full Ranking
+                    <div>
+                        <Link
+                            to="/air-quality-comparison"
+                            style={{
+                                textDecoration: 'none',
+                                display: 'block',
+                                width: '100%',
+                                textAlign: 'center',
+                                border: '1px ',
+                                borderRadius: '0 0 8px 8px',
+                                padding: '8px 0',
+                                color: 'white',
+                            }}
+                            className='bg-primary hover:bg-primaryHover mb-4'
+                        >
+                            View Air Quality Comparison Between Cities
+                        </Link>
                     </div>
 
 
                 </div>
 
                 <div className='max-w-[550px] mb-7 sm:ml-7'>
-                    <div className='bg-white px-6 py-4'>
-                        <span className='text-lg font-bold'><span className='text-[#FF69B4]'>Dhaka Banani</span> Real-Time Air Quality Index(AQI)</span> <br />
-
-                        <span className='text-sm text-gray-800'>
-                            Current air pollution level and weather condition of your location with the aggregate levels of major air pollutants in the ambient air.
-                        </span>
-
-                        <div className=''>
-                            <AQICircularProgress aqi={270} maxValue={360} />
-                            {/* <span>{getAQILabel(270)}</span> */}
-                        </div>
-                    </div>
-
-
-
+                    <SearchBar />
+                    <CurrentLocation />
                 </div>
             </div>
         </>
