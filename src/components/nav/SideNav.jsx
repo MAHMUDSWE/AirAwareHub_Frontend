@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faMap } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faList, faMap } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
 
@@ -26,6 +26,16 @@ function NavMenu() {
                         <div className=' text-white text-xl  px-6 py-2 hover:bg-blue-400'>
                             <FontAwesomeIcon icon={faMap} className="mr-2" />
                             Map View
+                        </div>
+                    </NavLink>
+                </li>
+                <li className='gap-1 border-b-2 border-blue-200'>
+                    <NavLink
+                        to="/economic-factors"
+                    >
+                        <div className=' text-white text-xl  px-6 py-2 hover:bg-blue-400'>
+                            <FontAwesomeIcon icon={faList} className="mr-2" />
+                            Economic Factors
                         </div>
                     </NavLink>
                 </li>

@@ -12,6 +12,11 @@ const CityService = {
         const response = await axiosInstance.get(endpoint);
         return response.data;
     },
+    getListOfCities: async () => {
+        const endpoint = apiEndpoint.city.listOfCities;
+        const response = await axiosInstance.get(endpoint);
+        return response.data;
+    }
 };
 
 export default CityService;

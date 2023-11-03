@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faMap } from '@fortawesome/free-solid-svg-icons';
+import { faCodeCompare, faHome, faList, faMap } from '@fortawesome/free-solid-svg-icons';
 
 import SideNavToggleButton from './SideNavToggleButton';
 import SideNav from './SideNav';
@@ -34,6 +34,16 @@ function NavMenu() {
                     >
                         <FontAwesomeIcon icon={faMap} className="mr-2 text-lg" />
                         Map View
+                    </NavLink>
+                </li>
+                <li >
+                    <NavLink
+                        className={({ isActive }) => isActive ? `text-blue-600 p-3 border-b-4 border-blue-600` : `text-gray-500 transition hover:bg-gray-100 text-lg px-3 py-3 rounded-md`}
+                        to={`/economic-factors`}
+
+                    >
+                        <FontAwesomeIcon icon={faList} className="mr-2 text-lg" />
+                        Economic Factors
                     </NavLink>
                 </li>
             </ul>
