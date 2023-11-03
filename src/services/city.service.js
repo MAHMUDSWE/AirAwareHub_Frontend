@@ -12,11 +12,32 @@ const CityService = {
         const response = await axiosInstance.get(endpoint);
         return response.data;
     },
-    getListOfCities: async () => {
+    getListOfCities: async (searchText) => {
+
         const endpoint = apiEndpoint.city.listOfCities;
-        const response = await axiosInstance.get(endpoint);
+
+        const response = await axiosInstance.get(endpoint, {
+            params: {
+                city_name: searchText
+            }
+        });
+
         return response.data;
+    },
+    getAirQualityDataOfCity: async ({ city, state, country }) => {
+        const endpoint = apiEndpoint.city.cityAirQualityData;
+        const response = await axiosInstance.get(endpoint, {
+            params: {
+                city, state, country
+            }
+        });
+        console.log(response);
+        console.log(Object.keys(response));
+        const data = response.data;
+
+        return data;
     }
+
 };
 
 export default CityService;

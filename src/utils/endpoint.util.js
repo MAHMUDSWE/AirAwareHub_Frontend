@@ -4,7 +4,8 @@ const apiEndpoint = {
     city: {
         topTenPollutedCity: "/top-10-polluted-city",
         topTenCleanCity: "/top-10-clean-city",
-        listOfCities: "/list-of-cities"
+        listOfCities: "/api/v1/search-city",
+        cityAirQualityData: "/api/v1/city"
     }
 };
 
