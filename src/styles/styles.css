@@ -1,0 +1,47 @@
+.main {
+    background-color: #f3f4f6;
+    width: 60%;
+}
+.selectCityContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.citySelect {
+    width: 45%;  /* Adjust as needed */
+}
+.compareButton {
+    background-color: #007BFF;  /* Basic blue color */
+    color: white;  /* Text color */
+    border: none;  /* Removes the default button border */
+    padding: 10px 20px;  /* Button size */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;  /* Changes the cursor when you hover over the button */
+    border-radius: 4px;  /* Rounded corners */
+    transition: background-color 0.3s ease;  /* Smooth transition */
+}
+
+.compareButton:hover {
+    background-color: #0056b3;  /* Darker blue color */
+}
+
+/* Center the "Select Two Cities" and "Compare" button */
+.header {
+    text-align: center;
+  }
+  
+  .centered-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Add a line below the bar chart */
+  .line {
+    width: 100%;
+    border: 1px solid #000; /* You can adjust the style as needed */
+  }
+  
