@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import CityComparison from "../pages/CityComparison";
 import SearchPage from "../pages/SearchPage";
 import MapView from "../pages/MapView";
+import CitySocialEconomicFactors from "../pages/CountrySocioEconomicFactor";
 
 function PageRoutes() {
 
@@ -20,6 +21,7 @@ function PageRoutes() {
                     } />
                     <Route path="/search" element={<SearchPage />} />
                     <Route path="/mapview" element={<MapView />} />
+                    <Route path="/economic-factors" element={<CitySocialEconomicFactors />} />
 
                     <Route path="/*" element={<ErrorPage />} />
 
