@@ -5,6 +5,7 @@ const CityService = {
     getTopTenPollutedCity: async () => {
         const endpoint = apiEndpoint.city.topTenPollutedCity;
         const response = await axiosInstance.get(endpoint);
+        console.log(response)
         return response.data;
     },
     getTopTenCleanCity: async () => {

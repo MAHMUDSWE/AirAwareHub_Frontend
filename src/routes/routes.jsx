@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage";
 import HomePage from "../pages/HomePage";
 import CityComparison from "../pages/CityComparison";
 import SearchPage from "../pages/SearchPage";
+import MapView from "../pages/MapView";
 
 function PageRoutes() {
 
@@ -18,6 +19,7 @@ function PageRoutes() {
                         <CityComparison />
                     } />
                     <Route path="/search" element={<SearchPage />} />
+                    <Route path="/mapview" element={<MapView />} />
 
                     <Route path="/*" element={<ErrorPage />} />
 
