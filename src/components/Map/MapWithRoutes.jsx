@@ -5,7 +5,14 @@ import 'leaflet/dist/images/marker-icon.png';
 import 'leaflet/dist/images/marker-shadow.png';
 import AirQualityDetails from '../aqi/AirQualityDetails';
 
+import customIconPath from '../../assets/redMapIcon.png';
+
 function MapWithRoutes({ mapData }) {
+
+    const redMapIcon = L.icon({
+        iconUrl: customIconPath,
+        iconSize: [30, 30],
+    });
 
     const swappedMapData = mapData.map(city => ({
         ...city,
@@ -25,7 +32,10 @@ function MapWithRoutes({ mapData }) {
                 />
                 {
                     swappedMapData.map((city, index) => (
-                        <Marker key={index} position={city.coordinates}>
+                        <Marker
+                            key={index}
+                            icon={city.pollution.aqius >= 150 ? redMapIcon : ''}
+                            position={city.coordinates}>
                             <Popup>
                                 <AirQualityDetails airqualitydata={city} />
                             </Popup>

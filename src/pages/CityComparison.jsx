@@ -78,19 +78,21 @@ export default function CityComparison() {
                 </div>
                 <button className='compareButton' onClick={compare}>Compare</button>
 
-                <BarChart width={400} height={300} data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Dhaka" fill={getAQIColor(firstCityData.aqius)} barSize={30}>
-                        <LabelList dataKey="Dhaka" position="top" />
-                    </Bar>
-                    <Bar dataKey="Mumbai" fill={getAQIColor(secondCityData.aqius)} barSize={30}>
-                        <LabelList dataKey="Mumbai" position="top" />
-                    </Bar>
-                </BarChart>
+                <div className='flex items-center justify-center'>
+                    <BarChart width={400} height={300} data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="Dhaka" fill={getAQIColor(firstCityData.aqius)} barSize={30}>
+                            <LabelList dataKey="Dhaka" position="top" />
+                        </Bar>
+                        <Bar dataKey="Mumbai" fill={getAQIColor(secondCityData.aqius)} barSize={30}>
+                            <LabelList dataKey="Mumbai" position="top" />
+                        </Bar>
+                    </BarChart>
+                </div>
 
                 <CityComparisonTable firstCityData={firstCityData} secondCityData={secondCityData} />
 
