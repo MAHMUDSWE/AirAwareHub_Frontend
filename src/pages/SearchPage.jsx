@@ -36,7 +36,7 @@ export default function () {
     return (
         <>
             <Navbar />
-            {isError && <div className='mt-6 mx-auto justify-center flex flex-col items-center bg-gray-100'>
+            {(isError || data?.data == "") && <div className='mt-6 mx-auto justify-center flex flex-col items-center bg-gray-100'>
                 <div className=' flex items-center justify-center'>
                     <span className='text-lg font-bold'><span className='text-[#FF69B4]'>{city}</span> Real-Time Air Quality Index (AQI)</span> <br />
                 </div>

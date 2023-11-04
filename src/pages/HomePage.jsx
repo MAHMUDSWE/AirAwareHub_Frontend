@@ -4,23 +4,67 @@ import { getAQIColor } from '../utils/aqiColors.util';
 import { AQIHorizontalBar } from '../components/aqi/AqiHorizontalBar';
 import SearchBar from '../components/shared/Search';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import CurrentLocation from '../components/shared/CurrentLocation';
+import CityService from '../services/city.service';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+
 
 export default function HomePage() {
     const [rankingType, setRankingType] = useState('mostPolluted');
+    const [cityRankings, setCityRankings] = useState(null);
 
-    const cityRankings = [
-        { locationid: 1, cityName: 'City 1', aqi: 50 },
-        { locationid: 1, cityName: 'City 1', aqi: 70 },
-        { locationid: 2, cityName: 'City 2', aqi: 100 },
-        { locationid: 3, cityName: 'City 3', aqi: 150 },
-        { locationid: 4, cityName: 'City 4', aqi: 250 },
-        { locationid: 4, cityName: 'City 4', aqi: 200 },
-        { locationid: 5, cityName: 'City 5', aqi: 300 },
-        { locationid: 6, cityName: 'City 6', aqi: 330 },
-        { locationid: 6, cityName: 'City 6', aqi: 260 },
-        { locationid: 6, cityName: 'City 6', aqi: 400 },
-    ];
+    const { data: pollutedCityData, isError: isErrorPolluted } = useQuery({
+        enabled: rankingType === 'mostPolluted',
+        queryKey: ['isFetching', 'getPollutedCityData', rankingType],
+        queryFn: async () => await CityService.getTopTenPollutedCity(),
+        staleTime: 15000
+    });
+    useEffect(() => {
+        if (pollutedCityData) {
+            setCityRankings(pollutedCityData);
+        }
+    }, [pollutedCityData]);
+
+    useEffect(() => {
+        if (isErrorPolluted) {
+            toast.error("Something went wrong!")
+        }
+    }, [isErrorPolluted]);
+
+    const { data: cleanestCityData, isError: isErrorCleanest } = useQuery({
+        enabled: rankingType === 'cleanest',
+        queryKey: ['isFetching', 'getCleanestCityData', rankingType],
+        queryFn: async () => await CityService.getTopTenCleanCity(),
+        staleTime: 15000
+    });
+
+    useEffect(() => {
+        if (cleanestCityData) {
+
+            setCityRankings(cleanestCityData);
+        }
+    }, [cleanestCityData]);
+
+    useEffect(() => {
+        if (isErrorCleanest) {
+            toast.error("Something went wrong!")
+        }
+    }, [isErrorCleanest]);
+
+    // const cityRankings = [
+    //     { locationid: 1, cityName: 'City 1', aqi: 50 },
+    //     { locationid: 1, cityName: 'City 1', aqi: 70 },
+    //     { locationid: 2, cityName: 'City 2', aqi: 100 },
+    //     { locationid: 3, cityName: 'City 3', aqi: 150 },
+    //     { locationid: 4, cityName: 'City 4', aqi: 250 },
+    //     { locationid: 4, cityName: 'City 4', aqi: 200 },
+    //     { locationid: 5, cityName: 'City 5', aqi: 300 },
+    //     { locationid: 6, cityName: 'City 6', aqi: 330 },
+    //     { locationid: 6, cityName: 'City 6', aqi: 260 },
+    //     { locationid: 6, cityName: 'City 6', aqi: 400 },
+    // ];
 
     return (
         <>
@@ -72,16 +116,14 @@ export default function HomePage() {
                                     </tr>
                                 </thead>
                                 <tbody className=''>
-                                    {cityRankings
-
-                                        .sort((a, b) => (rankingType === 'cleanest' ? a.aqi - b.aqi : b.aqi - a.aqi))
+                                    {cityRankings?.sort((a, b) => (rankingType === 'cleanest' ? a.aqius - b.aqius : b.aqius - a.aqius))
                                         .slice(0, 10)
                                         .map((city, index) => (
                                             <tr key={index} className=''>
                                                 <td className='py-2 mt-1'>{index + 1}</td>
                                                 <td>{city.cityName}</td>
-                                                <td className='mt-1' style={{ backgroundColor: getAQIColor(city.aqi) }}>
-                                                    {city.aqi}
+                                                <td className='mt-1' style={{ backgroundColor: getAQIColor(city.aqius) }}>
+                                                    {city.aqius}
                                                 </td>
                                             </tr>
                                         ))}
