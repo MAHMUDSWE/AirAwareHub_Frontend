@@ -11,32 +11,32 @@ export default function CityComparison() {
     const [secondSelectedCity, setSecondSelectedCitie] = useState();
     const [showGraph, setShowGraph] = useState(false);
     const cities = [
-        { label: 'Bangladesh', value: 'bd' },
-        { label: 'India', value: 'ind' },
-        { label: 'United State', value: 'us' },
+        { label: 'Dhaka', value: 'Dhaka' },
+        { label: 'Mumbai', value: 'Mumbai' },
+        { label: 'New York', value: 'New York' },
     ];
 
     const firstCityData =
     {
         "ts": "2019-08-05T03:00:00.000Z",
-        "aqius": 41,
+        "aqius": 166,
         "aqicn": 14,
-        "tp": 25,
-        "tp_min": 25,
-        "pr": 962,
-        "hu": 65,
+        "temperature": 25,
+        "temperature_min": 25,
+        "pressure": 962,
+        "humidity": 65,
         "ws": 1,
         "wd": 228,
         "ic": "03n"
     };
     const secondCityData = {
         "ts": "2019-08-05T06:00:00.000Z",
-        "aqius": 68,
+        "aqius": 168,
         "aqicn": 29,
-        "tp": 22,
-        "tp_min": 22,
-        "pr": 962,
-        "hu": 74,
+        "temperature": 22,
+        "temperature_min": 22,
+        "pressure": 962,
+        "humidity": 74,
         "ws": 0,
         "wd": 253,
         "ic": "10n"
@@ -44,8 +44,8 @@ export default function CityComparison() {
     const data = [
         {
             name: 'AQI',
-            firstCity: firstCityData.aqius,
-            secondCity: secondCityData.aqius,
+            Dhaka: firstCityData.aqius,
+            Mumbai: secondCityData.aqius,
         },
     ];
 
@@ -84,11 +84,11 @@ export default function CityComparison() {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="firstCity" fill={getAQIColor(firstCityData.aqius)} barSize={30}>
-                        <LabelList dataKey="firstCity" position="top" />
+                    <Bar dataKey="Dhaka" fill={getAQIColor(firstCityData.aqius)} barSize={30}>
+                        <LabelList dataKey="Dhaka" position="top" />
                     </Bar>
-                    <Bar dataKey="secondCity" fill={getAQIColor(secondCityData.aqius)} barSize={30}>
-                        <LabelList dataKey="secondCity" position="top" />
+                    <Bar dataKey="Mumbai" fill={getAQIColor(secondCityData.aqius)} barSize={30}>
+                        <LabelList dataKey="Mumbai" position="top" />
                     </Bar>
                 </BarChart>
 

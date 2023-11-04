@@ -11,8 +11,8 @@ export default function CityComparisonTable({ firstCityData, secondCityData }) {
                 <thead >
                     <tr>
                         <th className='text-center'>Index</th>
-                        <th className='text-center'>City 1</th>
-                        <th className='text-center'>City 2</th>
+                        <th className='text-center'>Dhaka</th>
+                        <th className='text-center'>Mumbai</th>
                     </tr>
                 </thead>
 
