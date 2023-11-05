@@ -53,19 +53,6 @@ export default function HomePage() {
         }
     }, [isErrorCleanest]);
 
-    // const cityRankings = [
-    //     { locationid: 1, cityName: 'City 1', aqi: 50 },
-    //     { locationid: 1, cityName: 'City 1', aqi: 70 },
-    //     { locationid: 2, cityName: 'City 2', aqi: 100 },
-    //     { locationid: 3, cityName: 'City 3', aqi: 150 },
-    //     { locationid: 4, cityName: 'City 4', aqi: 250 },
-    //     { locationid: 4, cityName: 'City 4', aqi: 200 },
-    //     { locationid: 5, cityName: 'City 5', aqi: 300 },
-    //     { locationid: 6, cityName: 'City 6', aqi: 330 },
-    //     { locationid: 6, cityName: 'City 6', aqi: 260 },
-    //     { locationid: 6, cityName: 'City 6', aqi: 400 },
-    // ];
-
     return (
         <>
             <Navbar />
